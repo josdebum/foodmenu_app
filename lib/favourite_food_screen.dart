@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:foodmenu_app/provider.dart';
 import 'package:provider/provider.dart';
@@ -27,57 +26,65 @@ class _FavouriteFoodScreenState extends State<FavouriteFoodScreen> {
                 builder: (context, data, child) => Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GridView.builder(
-                          shrinkWrap: true,
-                          itemCount: data.favouriteFruits.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 20,
-                                  childAspectRatio: 0.86,
-                                  mainAxisSpacing: 10),
-                          itemBuilder: (BuildContext context, int index) {
-                            return Stack(children: <Widget>[
-                              Container(
-                                height: 200,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(16),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.7))
-                                    ],
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          data.favouriteFruits[index].image!),
-                                      fit: BoxFit.fill,
-                                    )),
-                              ),
-                              Container(
-                                height: 200,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.24),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                              Positioned(
-                                  bottom: 30,
-                                  left: 10,
-                                  right: 10,
-                                  child: Text(
-                                    data.favouriteFruits[index].name!,
-                                    maxLines: 3,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        overflow: TextOverflow.ellipsis,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  )),
-                            ]);
-                          },
-                        )
+                        data.favouriteFruits.isEmpty
+                            ? const Center(
+                                child: Text("You have no Food on your list.",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500)))
+                            : GridView.builder(
+                                shrinkWrap: true,
+                                itemCount: data.favouriteFruits.length,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 20,
+                                        childAspectRatio: 0.86,
+                                        mainAxisSpacing: 10),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Stack(children: <Widget>[
+                                    Container(
+                                      height: 200,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.7))
+                                          ],
+                                          image: DecorationImage(
+                                            image: AssetImage(data
+                                                .favouriteFruits[index].image!),
+                                            fit: BoxFit.fill,
+                                          )),
+                                    ),
+                                    Container(
+                                      height: 200,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.24),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        bottom: 30,
+                                        left: 10,
+                                        right: 10,
+                                        child: Text(
+                                          data.favouriteFruits[index].name!,
+                                          maxLines: 3,
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              overflow: TextOverflow.ellipsis,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400),
+                                        )),
+                                  ]);
+                                },
+                              )
                       ],
                     ))),
       ),
