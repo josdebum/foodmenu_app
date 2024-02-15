@@ -6,7 +6,7 @@ images used in the project were downloaded from:
 <a href="https://www.istockphoto.com/search/2/image-film?phrase=african+food">link</a>
 
 ## 📸 Screenshots
-<img src="app_screenshots/screenshot.mov" width="260" height="460"> 
+<img src="app_screenshots/screenshot1.png" width="260" height="460"> 
 
 
 
